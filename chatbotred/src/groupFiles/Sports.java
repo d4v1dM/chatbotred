@@ -4,7 +4,7 @@ public class Sports implements Topic {
 	private boolean inSportsLoop;
 	private String sportsResponse;   
 	
-	// create more responses 
+	// create more responses  
 	private static String[] sport = {"I love sports.", "What sport do you like?", "Did you watch last night's game?"}; // add more responses
 	private static String[] basketball = {"Who do you like more? Lebron or Kobe?", ""}; 
 	private static String[] football = {"Tom brady should be kicked out of the NFL", "the jets are not going to make playoffs this season."};
