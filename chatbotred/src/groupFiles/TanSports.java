@@ -2,7 +2,7 @@ package groupFiles;
 
 public class TanSports implements Topic {
 	private boolean inSportsLoop;
-	private String sportsResponse;
+	private String sportsResponse;   
 	
 	// create more responses 
 	private static String[] sport = {"I love sports.", "What sport do you like?", "Did you watch last night's game?"}; // add more responses
