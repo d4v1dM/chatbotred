@@ -1,6 +1,6 @@
 package groupFiles;
 
-public class TanSports implements Topic {
+public class Sports implements Topic {
 	private boolean inSportsLoop;
 	private String sportsResponse;   
 	
@@ -11,7 +11,6 @@ public class TanSports implements Topic {
 	private static String[] baseball = {"Mets are number 1 in the wild card race.", "Hopefully they won't screw up the world series again"};
 	
 	public void talk() {
-		//
 		inSportsLoop = true;
 		while(inSportsLoop){
 			printResponse();
