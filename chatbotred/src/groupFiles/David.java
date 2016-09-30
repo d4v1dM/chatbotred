@@ -9,6 +9,8 @@ public class David {
 	static boolean inLoop;
 	static String response;
 	
+	static Topic Music;
+	
 	//declare group's classes
 	//static Topic school;
 	
@@ -176,9 +178,12 @@ public class David {
 	}
 
 	public static void createTopics() {
-		input = new Scanner(System.in);
-//		school = new School();
+		//school = new School();
 		//initialize group glasses
+		
+		input = new Scanner(System.in);
+		Music = new Music();
+		
 	}
 
 }
