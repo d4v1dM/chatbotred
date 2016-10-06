@@ -9,6 +9,9 @@ import org.jsoup.*;
 
 public class College implements Topic {
 	private String[] infoChoices = {"GENERAL INFORMATION", "TUITION, FEES, AND ESTIMATED STUDENT EXPENSES", "FINANCIAL AID", "ADMISSIONS"};
+	private int[] SAT = new int[3];
+	private int[] ACT = new int[5];
+	
 	@Override
 	public void talk() {
 		Scanner input = new Scanner(System.in);
@@ -125,13 +128,12 @@ public class College implements Topic {
 	public static String toUrl(String query){
 		String newUrl = "";
 		query = query.toLowerCase();
-		//
 		for(int i = 0; i < query.length(); i++){
 			if(query.charAt(i) == ' '){
 				newUrl += " ";
 			}
 			else newUrl += query.charAt(i);
-		}//
+		}
 		return newUrl;
 	}
 	
@@ -152,6 +154,45 @@ public class College implements Topic {
 	}
 	public static String getCollegeLink(String[] collegeData){
 		return "http://nces.ed.gov/collegenavigator/" + collegeData[1];
+	}
+	public static void ask(String quest){
+		System.out.println(quest);
+	}
+	public void setACT(){
+		Scanner input = new Scanner(System.in);
+		ask("Please input your scores for the ACT.");
+		
+		ask("For the Math section: ");
+		ACT[0] = input.nextInt();
+		
+		ask("For the English section: ");
+		ACT[1] = input.nextInt();
+		
+		ask("For the Reading section: ");
+		ACT[2] = input.nextInt();
+		
+		ask("For the Science section");
+		ACT[3] = input.nextInt();
+		
+		ask("Your composite score: ");
+		ACT[4] = input.nextInt();
+		input.close();
+		
+	}
+	public void setSAT(){
+		Scanner input = new Scanner(System.in);
+		ask("Please input your SATs scores.");
+		
+		ask("For the math section: ");
+		SAT[0] = input.nextInt();
+		
+		ask("For the Reading section: ");
+		SAT[1] = input.nextInt();
+		
+		ask("Your overall score: ");
+		SAT[2] = input.nextInt();
+		
+		input.close();
 	}
 
 }
