@@ -32,7 +32,7 @@ public class TanBaseball implements Topic {
 		
 	}
 	
-	public boolean isName(String userInput){
+	public void isName(String userInput){
 		String[] randomAnswer = {"Correct.", "Wrong."};
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
 		int spaces = 0;
@@ -56,8 +56,6 @@ public class TanBaseball implements Topic {
 				David.print(randomAnswer[ranIndex] + bResponse + " did not.");
 			}	
 		}
-		return false;
-		
 	}
 	
 	public boolean isTriggered(String userInput) {
