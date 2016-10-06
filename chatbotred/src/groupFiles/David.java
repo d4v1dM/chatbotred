@@ -1,5 +1,6 @@
 package groupFiles;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class David {
@@ -11,18 +12,20 @@ public class David {
 	
 	static Topic music;
 	static Topic sports;
+	static Topic college;
 	
 	//declare group's classes
 	//static Topic school;
 	
 	static int lineCount;
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		createTopics();
 		lineCount = 0;
 		//demonstrateStringMethods();
 		promptName();
-		//promptInput();
-		talkForever();
+//		//promptInput();
+//		talkForever();
+		college.talk();
 	}
 	
 	private static void promptName() {
@@ -73,7 +76,7 @@ public class David {
 		
 	}
 	
-	public static void talkForever(){
+	public static void talkForever() throws IOException{
 		inLoop = true;
 		while(inLoop){
 			cleanPrint("Greetings, " + user + " , how are you?");
@@ -185,6 +188,7 @@ public class David {
 		
 		input = new Scanner(System.in);
 		sports = new Sports();
+		college = new College();
 		
 	}
 

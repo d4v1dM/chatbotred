@@ -3,6 +3,8 @@
 
 package groupFiles;
 
+import java.io.IOException;
+
 public class Sports implements Topic {
 	private boolean inSportsLoop;
 	private boolean inBaseballLoop;
@@ -24,7 +26,12 @@ public class Sports implements Topic {
 				inSportsLoop = false;
 				inBaseballLoop = false;
 				inFootballLoop = false;
-				David.talkForever();
+				try {
+					David.talkForever();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
