@@ -35,7 +35,7 @@ public class TanBaseball implements Topic {
 	public void isName(String userInput){
 		String[] randomAnswer = {"Correct.", "Wrong."};
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
-		int spaces = 0;
+		int spaces = 0; 
 	
 		for(int s = 0; s < userInput.length(); s++){
 			if(userInput.charAt(s) == ' '){
