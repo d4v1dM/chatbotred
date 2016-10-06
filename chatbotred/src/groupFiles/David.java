@@ -11,7 +11,7 @@ public class David {
 	static String response;
 	
 	static Topic music;
-	static Topic sports;
+	static Topic baseball;
 	static Topic college;
 	
 	//declare group's classes
@@ -77,19 +77,19 @@ public class David {
 		while(inLoop){
 			cleanPrint("Greetings, " + user + " , do you want to talk about College or Sports?");
 			response = getInput();
-			if(sports.isTriggered(response)){
+			if(baseball.isTriggered(response)){
 				inLoop = false;
 				print("Do you want to talk about sports or baseball");
-				sports.talk();
+				baseball.talk();
 				response = getInput();
 				if(findKeyword(response, "baseball", 0) >= 0){
 					System.out.println("INLOOP");
 //					sports.changeBool();
-					sports.talk();
+					baseball.talk();
 				}
 				else{
 					if(findKeyword(response, "football", 0) >= 0){
-						sports.talk();
+						baseball.talk();
 					}
 				}
 			}
@@ -180,7 +180,7 @@ public class David {
 		//initialize group glasses
 		
 		input = new Scanner(System.in);
-		sports = new TanBaseball();
+		baseball = new TanBaseball();
 		college = new College();
 		
 	}
