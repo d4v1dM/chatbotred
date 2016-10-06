@@ -1,3 +1,8 @@
+/**********
+ * Made by David Medina
+ * This topic is College, mainly fetching college information and then serving it to the user.
+ */
+
 package groupFiles;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,7 +69,9 @@ public class College implements Topic {
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		// TODO Auto-generated method stub
+		if(David.findKeyword(userInput, "college", 0) >= 0){
+			return true;
+		}
 		return false;
 	}
 	public static void getCollegeTuition(Document site){
@@ -155,7 +162,7 @@ public class College implements Topic {
 	public static String getCollegeLink(String[] collegeData){
 		return "http://nces.ed.gov/collegenavigator/" + collegeData[1];
 	}
-	public static void ask(String quest){
+	public void ask(String quest){
 		System.out.println(quest);
 	}
 	public void setACT(){

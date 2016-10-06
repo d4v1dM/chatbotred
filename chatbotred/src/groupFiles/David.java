@@ -20,12 +20,8 @@ public class David {
 	static int lineCount;
 	public static void main(String[] args) throws IOException{
 		createTopics();
-		lineCount = 0;
-		//demonstrateStringMethods();
 		promptName();
-//		//promptInput();
-//		talkForever();
-		college.talk();
+		talkForever();
 	}
 	
 	private static void promptName() {
@@ -79,12 +75,9 @@ public class David {
 	public static void talkForever() throws IOException{
 		inLoop = true;
 		while(inLoop){
-			cleanPrint("Greetings, " + user + " , how are you?");
+			cleanPrint("Greetings, " + user + " , do you want to talk about College or Sports?");
 			response = getInput();
-			if(findKeyword(response,"good",0) >= 0){
-				cleanPrint("I'm so happy you are happy");
-			}
-			else if(sports.isTriggered(response)){
+			if(sports.isTriggered(response)){
 				inLoop = false;
 				print("Do you want to talk about sports or baseball");
 				sports.talk();
@@ -187,7 +180,7 @@ public class David {
 		//initialize group glasses
 		
 		input = new Scanner(System.in);
-		sports = new Sports();
+		sports = new TanBaseball();
 		college = new College();
 		
 	}
