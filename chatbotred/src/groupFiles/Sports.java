@@ -1,4 +1,5 @@
 //Kristy Tan
+// idea: Whos on first on base, ask names. Check to see if its one word only. And answer back with user input.
 
 package groupFiles;
 
@@ -8,7 +9,6 @@ public class Sports implements Topic {
 	private boolean inFootballLoop;
 	private String sportsResponse;  
 	private boolean inTeamLoop;
-	
 	
 	private static String[] football = {"Tom brady should be kicked out of the NFL", "the jets are not going to make playoffs this season.", "Broncos are doing well this season. Don't you think?", "I hope the NY Giants will win the superbowl again.", "Did you know that Lady Gaga is performing at this year's superbowl halftime?"};
 	private static String[] baseball = {"Mets are number 1 in the wild card race.", "Hopefully the Mets won't screw up the world series again", "Chase Utley should be banned from the MLB for breaking Tejada's leg"};
@@ -34,7 +34,6 @@ public class Sports implements Topic {
 		int fIndex = (int) (Math.random() * football.length);
 		int btIndex = (int) (Math.random() * bteam.length);
 		int ftIndex = (int) (Math.random() * fteam.length);
-		
 		if(inBaseballLoop){
 			if(inTeamLoop){
 				David.print("My favorite team is " + bteam[btIndex] + ".");
