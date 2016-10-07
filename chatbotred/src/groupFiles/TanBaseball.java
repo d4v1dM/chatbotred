@@ -41,11 +41,9 @@ public class TanBaseball implements Topic {
 		}
 		else{
 			if(nameRight == false){
-				System.out.println("false");
 				David.print("I do not understand, Please just give me a name.");
 			}
 			else{
-				System.out.println("true");
 				if(randomAnswer[ranIndex] == "Yes." || randomAnswer[ranIndex] == "Correct."){
 					David.print(randomAnswer[ranIndex] + bResponse + " did");
 				}
@@ -63,7 +61,6 @@ public class TanBaseball implements Topic {
 		for(int s = 0; s < userInput.length(); s++){
 			if(userInput.charAt(s) == ' '){
 				spaces++;
-				System.out.println(spaces);
 			}
 		}
 		
