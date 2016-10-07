@@ -16,8 +16,8 @@ public class TanBaseball implements Topic {
 	private static String[] people = {"Murphy", "Cespedes", "Dallas", "Pagan", "Crawford", "Marshall", "Ortiz", "Fernandez", "Posey", "Bradley", "Turner"};
 	private static String[] randomAnswer = {"Correct.", "Wrong.", "Yes.", "No."};
 	
-	public void talk() throws IOException {
-		inBaseballLoop1 = true;
+	public void talk() {
+		inBaseballLoop1 = true; 
 		while(inBaseballLoop1){
 			printResponse();
 			bResponse = David.getInput();
