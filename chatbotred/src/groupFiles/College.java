@@ -19,6 +19,10 @@ public class College implements Topic {
 	
 	@Override
 	public void talk() {
+		collegeInformation();
+	}
+	
+	public void collegeInformation(){
 		Scanner cInput = new Scanner(System.in);
 		int collegeNum;
 		String URL = "http://nces.ed.gov/collegenavigator/?q=";
@@ -108,7 +112,7 @@ public class College implements Topic {
 	}
 	
 	public static void getCollegeAdmissions(Document site){
-		Elements tables = site.getElementById("admsns").getElementsByClass("tabular").get(4).children();
+		Elements tables = site.getElementById("admsns").child(1).getElementsByClass("tabular").get(4).children();
 		for(Element tab: tables.get(1).children().get(0).children()){
 			System.out.println(tab.text());
 		}
