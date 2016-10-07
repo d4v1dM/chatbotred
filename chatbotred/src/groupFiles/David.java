@@ -36,11 +36,6 @@ public class David {
 		return input.nextLine();
 	}
 
-//	public static void print(String args){
-//		lineCount++;
-//		System.out.println("Line #" + lineCount + ": " + args);
-//	}
-//	
 	public static void print(String args){
 		// create multi-line String
 		String printString = "";
