@@ -1,93 +1,79 @@
-//kristy tan
+//Kristy Tan
 
 package groupFiles;
+
+import java.io.IOException;
 
 public class TanBaseball implements Topic {
 
 	private boolean inBaseballLoop1;
-	private boolean nameRight; 
 	private String bResponse;
-	private int spaces;
-	private static String[] bQuestions = {"Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", 
-										 "Who threw the ball to 3rd base?", "Who just got banned from MLB?", "Who got a home run?", "Who struck out?", 
-							   			 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?", "Who is the best baseball player ever?"};
-	private static String[] people = {"Murphy", "Cespedes", "Dallas", "Pagan", "Crawford", "Marshall", "Ortiz", "Fernandez", "Posey", "Bradley", "Turner"};
-	private static String[] randomAnswer = {"Correct.", "Wrong.", "Yes.", "No."};
+	private boolean nameRight;
+	private int start;
+	private static String[] bQuestions = {"Who made the diving catch?", "Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", "Who threw the ball to 3rd base?"};
+	private static String[] randomAnswer = {"Correct.", "Yes.", "No.", "Wrong."};
+	private static String[] people = {"Marshall", "Cespedes", "Crawford", "Fernandez", "Pagan", "Rizzo", "Rutgers", "Murphy", "Kansas", "Smith", "Antonio", "Dallas", "Ortiz", "Posey", "Turner"};
 	
-	public void talk() {
-		inBaseballLoop1 = true; 
+	public void talk() throws IOException {
+		inBaseballLoop1 = true;
+		start = 1;
 		while(inBaseballLoop1){
-			printResponse(); 
+			printResponse();
 			bResponse = David.getInput();
+			if(David.findKeyword(bResponse, "bye", 0) >= 0){
+				inBaseballLoop1 = false;
+				David.talkForever();
+			}
+			else{
+				isName(bResponse);
+			}
 		}
 	}
 
-	private void printResponse() { 
+	private void printResponse() {
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
 		int responseIndex = (int)(Math.random() * bQuestions.length);
-		int peopleIndex = (int) (Math.random() * people.length);
-		David.print(bQuestions[responseIndex]);
-		bResponse = David.getInput();
-		isName(bResponse);
-		if(nameRight == false){
-				David.print("I do not understand, Please just give me a name.");
+		int pIndex = (int)(Math.random() * people.length);
+		
+		if(start == 1){
+			David.print(bQuestions[responseIndex]);
+			start++;
 		}
 		else{
-			if(randomAnswer[ranIndex] == "Correct." || randomAnswer[ranIndex] == "Yes."){
-				David.print(randomAnswer[ranIndex] + bResponse + " did");
+			if(nameRight == false){
+				System.out.println("false");
+				David.print("I do not understand, Please just give me a name.");
 			}
 			else{
-				David.print(randomAnswer[ranIndex] + bResponse + " did not. " + people[peopleIndex] + "did.");
-			}	
-		}
-		
-	}
-		
-	
-	public void isName(String userInput){
-		spaces = 0;
-		for(int s = 0; s < userInput.length(); s++){
-			if(userInput.charAt(s) == ' '){
-				spaces++;	
+				System.out.println("true");
+				if(randomAnswer[ranIndex] == "Yes." || randomAnswer[ranIndex] == "Correct."){
+					David.print(randomAnswer[ranIndex] + bResponse + " did");
+				}
+				else{
+					David.print(randomAnswer[ranIndex] + " " + bResponse + " did not. " + people[pIndex] + " did.");
+				}	
 			}
 		}
 		
-		if(spaces != 0){
-			nameRight = false;
-			//System.out.println("false");
-		}
-		else{
-			nameRight = true;
-			//System.out.println("true");
-		}
 	}
 	
-//	public void isName(String userInput){
-//		String[] randomAnswer = {"Correct.", "Wrong."};
-//		int ranIndex = (int) (Math.random() * randomAnswer.length);
-//		int spaces = 0;
-//	
-//		for(int s = 0; s < userInput.length(); s++){
-//			if(userInput.charAt(s) == ' '){
-//				spaces++;
-//			}
-//		}
-//		
-//		if(spaces > 2){
-//			David.print("I do not understand, Please just give me a name.");
-//			bResponse = David.getInput();
-//			isName(bResponse);
-//		}
-//		else{
-//			if(randomAnswer[ranIndex] == "Correct." || randomAnswer[ranIndex] == "Yes."){
-//				David.print(randomAnswer[ranIndex] + bResponse + " did");
-//			}
-//			else{
-//				David.print(randomAnswer[ranIndex] + bResponse + " did not.");
-//					}	
-//		}
-//		
-//	}
+	public void isName(String userInput){
+		int spaces = 0;
+		
+		for(int s = 0; s < userInput.length(); s++){
+			if(userInput.charAt(s) == ' '){
+				spaces++;
+				System.out.println(spaces);
+			}
+		}
+		
+		if(spaces > 1){
+			nameRight = false;
+		}
+		else{
+			nameRight=true;
+		}
+	}
 	
 	public boolean isTriggered(String userInput) {
 		if(David.findKeyword(userInput, "sports", 0) >= 0){
