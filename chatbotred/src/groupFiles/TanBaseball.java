@@ -20,7 +20,7 @@ public class TanBaseball implements Topic {
 		while(inBaseballLoop1){
 			printResponse();
 			bResponse = David.getInput();
-			if(David.findKeyword(bResponse, "bye", 0) >= 0){
+			if(David.findKeyword(bResponse, "bye", 0) >= 0 || David.findKeyword(bResponse, "quit", 0) >= 0 || David.findKeyword(bResponse, "college", 0) >= 0 || David.findKeyword(bResponse, "goodbye", 0) >= 0){
 				inBaseballLoop1 = false;
 				David.talkForever();
 			}
@@ -41,7 +41,7 @@ public class TanBaseball implements Topic {
 		}
 		else{
 			if(nameRight == false){
-				David.print("I do not understand, Please just give me a name.");
+				David.print("I do not understand. Please just give me a name.");
 			}
 			else{
 				if(randomAnswer[ranIndex] == "Yes." || randomAnswer[ranIndex] == "Correct."){
