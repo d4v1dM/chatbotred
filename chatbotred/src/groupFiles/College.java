@@ -26,6 +26,7 @@ public class College implements Topic {
 		switch(reply){
 		case 0:
 			System.out.println("STATS");
+			collegeStats();
 			break;
 		case 1:
 			collegeInformation();
@@ -104,22 +105,27 @@ public class College implements Topic {
 //			ask("WRONG INPUT!");
 //			break;
 //		}
+		matchSAT();
 		
 		
 		userChoice.close();
 	}
 	
 	public void matchSAT(){
-		setSAT();
 		
 		try {
-			
-			Document site = Jsoup.connect("somehting").get();
+			setSAT();
+			String query = "http://www.collegesimply.com/search/" + "sat-" + SAT[2];
+			Document doc = Jsoup.connect(query).get();
+			Elements tags = doc.getElementsByClass("table");
+			for(Element tag: tags){
+				System.out.println("Element: " + tag);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ask("Scores are: " + "\n" + SAT[0] + "\n" + SAT[1] + "\n" + SAT[2] + "\n" + SAT[3] + "\n" + SAT[4]);
+		ask("Scores are: " + "\n" + SAT[0] + "\n" + SAT[1] + "\n" + SAT[2]);
 	}
 	
 	@Override
