@@ -13,7 +13,7 @@ import org.jsoup.select.*;
 import org.jsoup.*;
 
 public class College implements Topic {
-	private String[] infoChoices = {"GENERAL INFORMATION", "TUITION, FEES, AND ESTIMATED STUDENT EXPENSES", "FINANCIAL AID", "ADMISSIONS"};
+	private String[] infoChoices = {"General Information", "Tuition, Fees, and Estimated Student Expenses", "Financial Aid", "Admissions"};
 	private int[] SAT = new int[3];
 	private int[] ACT = new int[5];
 	
@@ -23,7 +23,7 @@ public class College implements Topic {
 		int collegeNum;
 		String URL = "http://nces.ed.gov/collegenavigator/?q=";
 		
-		System.out.println("What is the name of the college you want information about?");
+		System.out.println("What is the name of the college you want information on?");
 		URL += toUrl(cInput.nextLine());
 		
 		Document site;
@@ -39,29 +39,28 @@ public class College implements Topic {
 			
 			site = Jsoup.connect(getCollegeLink(results.get(collegeNum))).get();
 			
-			getCollegeAdmissions(site);
-//			System.out.println("What information do you want? (number)");
-//			for(int i = 0; i < infoChoices.length; i++){
-//				System.out.println(i + ": " + infoChoices[i]);
-//			}
-//			collegeNum = input.nextInt();
-//			
-//			switch(collegeNum){
-//			case 0: 
-//				getCollegeGeneral(site);
-//				break;
-//			case 1: 
-//				getCollegeTuition(site);
-//				break;
-//			case 2: 
-//				getCollegeAid(site);
-//				break;
-//			case 3: 
-//				System.out.println("You typed 1"); 
-//				break;
-//			default: 
-//				System.out.println("ERROR");
-//			}
+			System.out.println("What information do you want? (number)");
+			for(int i = 0; i < infoChoices.length; i++){
+				System.out.println(i + ": " + infoChoices[i]);
+			}
+			collegeNum = cInput.nextInt();
+			
+			switch(collegeNum){
+			case 0: 
+				getCollegeGeneral(site);
+				break;
+			case 1: 
+				getCollegeTuition(site);
+				break;
+			case 2: 
+				getCollegeAid(site);
+				break;
+			case 3: 
+				getCollegeAdmissions(site);
+				break;
+			default: 
+				System.out.println("That is not an option!");
+			}
 			David.inLoop = false;
 			cInput.close();
 			
