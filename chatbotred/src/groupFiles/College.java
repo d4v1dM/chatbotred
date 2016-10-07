@@ -25,7 +25,6 @@ public class College implements Topic {
 		int reply = userInput.nextInt();
 		switch(reply){
 		case 0:
-			System.out.println("STATS");
 			collegeStats();
 			break;
 		case 1:
@@ -102,7 +101,7 @@ public class College implements Topic {
 			matchACT();
 			break;
 		default:
-			ask("WRONG INPUT!");
+			ask("INVALID INPUTs make me VERY MAD!");
 			break;
 		}
 		userChoice.close();
