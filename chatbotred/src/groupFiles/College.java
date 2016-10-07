@@ -92,40 +92,57 @@ public class College implements Topic {
 	public void collegeStats(){
 		Scanner userChoice = new Scanner(System.in);
 		ask("Do you want to use SAT scores or ACT scores?" + "\n" + "0: SAT" + "\n" + "1: ACT");
-//		int reply = userChoice.nextInt();
-//		
-//		switch(reply){
-//		case 0:
-//			ask("SAT!");
-//			break;
-//		case 1:
-//			ask("ACT!");
-//			break;
-//		default:
-//			ask("WRONG INPUT!");
-//			break;
-//		}
-		matchSAT();
+		int reply = userChoice.nextInt();
 		
-		
+		switch(reply){
+		case 0:
+			matchSAT();
+			break;
+		case 1:
+			matchACT();
+			break;
+		default:
+			ask("WRONG INPUT!");
+			break;
+		}
 		userChoice.close();
 	}
 	
 	public void matchSAT(){
-		
 		try {
 			setSAT();
 			String query = "http://www.collegesimply.com/search/" + "sat-" + SAT[2];
 			Document doc = Jsoup.connect(query).get();
-			Elements tags = doc.getElementsByClass("table");
+			Elements tags = doc.getElementsByClass("table").select("tbody").get(0).children();
+			ask("Based on your scores, the schools are either reach, avg, low, or good.");
 			for(Element tag: tags){
-				System.out.println("Element: " + tag);
+				ask(""); // create space.
+				for(Element row: tag.children()){
+					ask(row.text()); // get text of rows.
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ask("Scores are: " + "\n" + SAT[0] + "\n" + SAT[1] + "\n" + SAT[2]);
+	}
+	public void matchACT(){
+		try {
+			setACT();
+			String query = "http://www.collegesimply.com/search/" + "act-" + ACT[4];
+			Document doc = Jsoup.connect(query).get();
+			Elements tags = doc.getElementsByClass("table").select("tbody").get(0).children();
+			ask("Based on your scores, the schools are either reach, avg, low, or good.");
+			for(Element tag: tags){
+				ask(""); // create space.
+				for(Element row: tag.children()){
+					ask(row.text()); // get text of rows.
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

@@ -70,7 +70,7 @@ public class David {
 	public static void talkForever() throws IOException{
 		inLoop = true;
 		while(inLoop){
-			print("Greetings, " + user + " , do you want to talk about College or Sports?");
+			print("Greetings, " + user + " , do you want to talk about College or Baseball?");
 			response = getInput();
 			if(baseball.isTriggered(response)){
 				inLoop = false;
