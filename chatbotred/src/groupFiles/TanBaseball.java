@@ -10,7 +10,7 @@ public class TanBaseball implements Topic {
 	private String bResponse;
 	private boolean nameRight;
 	private int start;
-	private static String[] bQuestions = {"Who made the diving catch?", "Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is at bat right now?", "Who threw the ball to 3rd base?"};
+	private static String[] bQuestions = {"Who got a 2 run homer?", "Who got a base hit?", "Who made the diving catch?", "Who is on first base?", "Who just hit a grand slam?", "Who is pitching today?", "Who is at bat right now?", "Who threw the ball to 3rd base?"};
 	private static String[] randomAnswer = {"Correct.", "Yes.", "No.", "Wrong."};
 	private static String[] people = {"Marshall", "Cespedes", "Crawford", "Fernandez", "Pagan", "Rizzo", "Rutgers", "Murphy", "Kansas", "Smith", "Antonio", "Dallas", "Ortiz", "Posey", "Turner"};
 	
@@ -46,9 +46,11 @@ public class TanBaseball implements Topic {
 			else{
 				if(randomAnswer[ranIndex] == "Yes." || randomAnswer[ranIndex] == "Correct."){
 					David.print(randomAnswer[ranIndex] + bResponse + " did");
+					David.print(bQuestions[responseIndex]);
 				}
 				else{
 					David.print(randomAnswer[ranIndex] + " " + bResponse + " did not. " + people[pIndex] + " did.");
+					David.print(bQuestions[responseIndex]);
 				}	
 			}
 		}
