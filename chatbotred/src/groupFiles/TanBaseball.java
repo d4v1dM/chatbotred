@@ -11,6 +11,7 @@ public class TanBaseball implements Topic {
 	private static String[] bQuestions = {"Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", 
 										 "Who threw the ball to 3rd base?", "Who just got banned from MLB?", "Who got a home run?", "Who struck out?", 
 							   			 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?"};
+	private static String[] randomAnswer = {"Correct.", "Wrong.", "Yes.", "No."};
 	
 	public void talk() {
 		inBaseballLoop1 = true;
@@ -23,14 +24,11 @@ public class TanBaseball implements Topic {
 	}
 
 	private void printResponse() { 
-		String[] randomAnswer = {"Correct.", "Wrong."};
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
 		int responseIndex = (int)(Math.random() * bQuestions.length);
 		
-		David.print(bQuestions[responseIndex]);
-		
 		if(nameRight == false){
-			if(spaces > 2){
+			if(spaces > 1){
 				David.print("I do not understand, Please just give me a name.");
 				bResponse = David.getInput();
 				isName(bResponse);
@@ -39,18 +37,16 @@ public class TanBaseball implements Topic {
 		else{
 			if(randomAnswer[ranIndex] == "Correct." || randomAnswer[ranIndex] == "Yes."){
 				David.print(randomAnswer[ranIndex] + bResponse + " did");
-				David.print(bQuestions[responseIndex]);
 			}
 			else{
 				David.print(randomAnswer[ranIndex] + bResponse + " did not.");
-				David.print(bQuestions[responseIndex]);
 			}	
 		}
+		David.print(bQuestions[responseIndex]);
 	}
 		
 	
 	public boolean isName(String userInput){
-		
 		
 		for(int s = 0; s < userInput.length(); s++){
 			if(userInput.charAt(s) == ' '){
@@ -58,7 +54,7 @@ public class TanBaseball implements Topic {
 			}
 		}
 		
-		if(spaces >= 2){
+		if(spaces > 1){
 			nameRight = false;
 			System.out.println("false");
 		}
