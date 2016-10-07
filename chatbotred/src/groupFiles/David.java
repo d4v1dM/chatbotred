@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class David {
 
-	static Scanner input;
+	static Scanner input = new Scanner(System.in);
 	static String user;
 	static boolean inLoop;
 	static String response;
 	
-	static Topic music;
 	static Topic baseball;
 	static Topic college;
 	
@@ -26,9 +25,9 @@ public class David {
 	
 	private static void promptName() {
 		// TODO Auto-generated method stub
-		cleanPrint("Hello, human! I am a board coverd with semi-conductors and other such electronic components. What is your name?");
+		print("Hello, human! I am a board coverd with semi-conductors and other such electronic components. What is your name?");
 		user = input.nextLine();
-		cleanPrint("I will call you " + user  + " until you terminate me.");
+		print("I will call you " + user  + " until you terminate me.");
 		
 	}
 	
@@ -36,12 +35,12 @@ public class David {
 		return input.nextLine();
 	}
 
+//	public static void print(String args){
+//		lineCount++;
+//		System.out.println("Line #" + lineCount + ": " + args);
+//	}
+//	
 	public static void print(String args){
-		lineCount++;
-		System.out.println("Line #" + lineCount + ": " + args);
-	}
-	
-	public static void cleanPrint(String args){
 		// create multi-line String
 		String printString = "";
 		int cutOff = 35;
@@ -75,16 +74,13 @@ public class David {
 	public static void talkForever() throws IOException{
 		inLoop = true;
 		while(inLoop){
-			cleanPrint("Greetings, " + user + " , do you want to talk about College or Sports?");
+			print("Greetings, " + user + " , do you want to talk about College or Sports?");
 			response = getInput();
-			if(baseball.isTriggered(response)){
+			if(findKeyword(response,"sports",0) >= 0){
 				inLoop = false;
-				print("Do you want to talk about sports or baseball");
-				baseball.talk();
+				print("Do you want to talk about football or baseball");
 				response = getInput();
 				if(findKeyword(response, "baseball", 0) >= 0){
-					System.out.println("INLOOP");
-//					sports.changeBool();
 					baseball.talk();
 				}
 				else{
@@ -94,7 +90,10 @@ public class David {
 				}
 			}
 			else{
-				cleanPrint("I'm sorry I dont understand you.");
+				if(college.isTriggered(response)){
+					college.talk();
+				}
+				else print("I'm sorry I dont understand you.");
 			}
 			
 		}

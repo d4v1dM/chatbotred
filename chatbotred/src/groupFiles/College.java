@@ -19,12 +19,12 @@ public class College implements Topic {
 	
 	@Override
 	public void talk() {
-		Scanner input = new Scanner(System.in);
+		Scanner cInput = new Scanner(System.in);
 		int collegeNum;
 		String URL = "http://nces.ed.gov/collegenavigator/?q=";
 		
 		System.out.println("What is the name of the college you want information about?");
-		URL += toUrl(input.nextLine());
+		URL += toUrl(cInput.nextLine());
 		
 		Document site;
 		try {
@@ -35,32 +35,36 @@ public class College implements Topic {
 			for(int i = 0; i < results.size(); i++){
 				System.out.println(i + ": " + getCollegeName(results.get(i)));
 			}
-			collegeNum = input.nextInt();
+			collegeNum = cInput.nextInt();
 			
 			site = Jsoup.connect(getCollegeLink(results.get(collegeNum))).get();
-			System.out.println("What information do you want? (number)");
-			for(int i = 0; i < infoChoices.length; i++){
-				System.out.println(i + ": " + infoChoices[i]);
-			}
-			collegeNum = input.nextInt();
 			
-			switch(collegeNum){
-			case 0: 
-				getCollegeGeneral(site);
-				break;
-			case 1: 
-				getCollegeTuition(site);
-				break;
-			case 2: 
-				getCollegeAid(site);
-				break;
-			case 3: 
-				System.out.println("You typed 1"); 
-				break;
-			default: 
-				System.out.println("ERROR");
-			}
-			input.close();
+			getCollegeAdmissions(site);
+//			System.out.println("What information do you want? (number)");
+//			for(int i = 0; i < infoChoices.length; i++){
+//				System.out.println(i + ": " + infoChoices[i]);
+//			}
+//			collegeNum = input.nextInt();
+//			
+//			switch(collegeNum){
+//			case 0: 
+//				getCollegeGeneral(site);
+//				break;
+//			case 1: 
+//				getCollegeTuition(site);
+//				break;
+//			case 2: 
+//				getCollegeAid(site);
+//				break;
+//			case 3: 
+//				System.out.println("You typed 1"); 
+//				break;
+//			default: 
+//				System.out.println("ERROR");
+//			}
+			David.inLoop = false;
+			cInput.close();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,6 +108,18 @@ public class College implements Topic {
 		}
 	}
 	
+	public static void getCollegeAdmissions(Document site){
+		Elements tables = site.getElementById("admsns").getElementsByClass("tabular").get(4).children();
+		for(Element tab: tables.get(1).children().get(0).children()){
+			System.out.println(tab.text());
+		}
+		
+		for(Element tab: tables.select("tbody").select("tr")){
+			for(Element row: tab.children()){
+				System.out.println(row.text());
+			}
+		}
+	}
 	public static void getCollegeGeneral(Document site){
 		Elements general = site.getElementsByClass("layouttab").select("tbody").get(0).children();
 		Element info = site.getElementsByClass("collegedash").get(0).child(1).child(1);
