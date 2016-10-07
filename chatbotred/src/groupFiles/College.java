@@ -19,7 +19,22 @@ public class College implements Topic {
 	
 	@Override
 	public void talk() {
-		collegeInformation();
+		Scanner userInput = new Scanner(System.in);
+		ask("Do you want to get colleges based on your stats or just information about college?");
+		ask("0. Colleges based on stats" + "\n" + "1. Information about colleges.");
+		int reply = userInput.nextInt();
+		switch(reply){
+		case 0:
+			System.out.println("STATS");
+			break;
+		case 1:
+			collegeInformation();
+			break;
+		default:
+			David.print("Invalid answer!");
+		}
+		David.inLoop = false;
+		userInput.close();
 	}
 	
 	public void collegeInformation(){
@@ -65,7 +80,6 @@ public class College implements Topic {
 			default: 
 				System.out.println("That is not an option!");
 			}
-			David.inLoop = false;
 			cInput.close();
 			
 		} catch (IOException e) {
