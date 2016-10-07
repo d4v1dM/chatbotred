@@ -19,7 +19,7 @@ public class TanBaseball implements Topic {
 	public void talk() {
 		inBaseballLoop1 = true; 
 		while(inBaseballLoop1){
-			printResponse();
+			printResponse(); 
 			bResponse = David.getInput();
 		}
 	}
