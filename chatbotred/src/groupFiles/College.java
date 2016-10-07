@@ -19,6 +19,25 @@ public class College implements Topic {
 	
 	@Override
 	public void talk() {
+		Scanner userInput = new Scanner(System.in);
+		ask("Do you want to get colleges based on your stats or just information about college?");
+		ask("0. Colleges based on stats" + "\n" + "1. Information about colleges.");
+		int reply = userInput.nextInt();
+		switch(reply){
+		case 0:
+			System.out.println("STATS");
+			break;
+		case 1:
+			collegeInformation();
+			break;
+		default:
+			David.print("Invalid answer!");
+		}
+		David.inLoop = false;
+		userInput.close();
+	}
+	
+	public void collegeInformation(){
 		Scanner cInput = new Scanner(System.in);
 		int collegeNum;
 		String URL = "http://nces.ed.gov/collegenavigator/?q=";
@@ -61,7 +80,6 @@ public class College implements Topic {
 			default: 
 				System.out.println("That is not an option!");
 			}
-			David.inLoop = false;
 			cInput.close();
 			
 		} catch (IOException e) {
@@ -108,7 +126,7 @@ public class College implements Topic {
 	}
 	
 	public static void getCollegeAdmissions(Document site){
-		Elements tables = site.getElementById("admsns").getElementsByClass("tabular").get(4).children();
+		Elements tables = site.getElementById("admsns").child(1).getElementsByClass("tabular").get(4).children();
 		for(Element tab: tables.get(1).children().get(0).children()){
 			System.out.println(tab.text());
 		}
