@@ -7,7 +7,7 @@ import java.io.IOException;
 public class TanBaseball implements Topic {
 
 	private boolean inBaseballLoop1;
-	private boolean nameRight;
+	private boolean nameRight; 
 	private String bResponse;
 	private int spaces;
 	private static String[] bQuestions = {"Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", 
