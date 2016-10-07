@@ -2,8 +2,6 @@
 
 package groupFiles;
 
-import java.io.IOException;
-
 public class TanBaseball implements Topic {
 
 	private boolean inBaseballLoop1;
@@ -28,11 +26,11 @@ public class TanBaseball implements Topic {
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
 		int responseIndex = (int)(Math.random() * bQuestions.length);
 		int peopleIndex = (int) (Math.random() * people.length);
-		
+		David.print(bQuestions[responseIndex]);
+		bResponse = David.getInput();
+		isName(bResponse);
 		if(nameRight == false){
-			if(spaces > 1){
 				David.print("I do not understand, Please just give me a name.");
-			}
 		}
 		else{
 			if(randomAnswer[ranIndex] == "Correct." || randomAnswer[ranIndex] == "Yes."){
@@ -43,7 +41,6 @@ public class TanBaseball implements Topic {
 			}	
 		}
 		
-		David.print(bQuestions[responseIndex]);
 	}
 		
 	
@@ -55,13 +52,13 @@ public class TanBaseball implements Topic {
 			}
 		}
 		
-		if(spaces > 1){
+		if(spaces != 0){
 			nameRight = false;
-			System.out.println("false");
+			//System.out.println("false");
 		}
 		else{
 			nameRight = true;
-			System.out.println("true");
+			//System.out.println("true");
 		}
 	}
 	

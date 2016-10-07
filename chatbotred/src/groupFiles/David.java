@@ -10,6 +10,7 @@ public class David {
 	static boolean inLoop;
 	static String response;
 	
+
 	static Topic baseball;
 	static Topic college;
 	
@@ -76,18 +77,9 @@ public class David {
 		while(inLoop){
 			print("Greetings, " + user + " , do you want to talk about College or Sports?");
 			response = getInput();
-			if(findKeyword(response,"sports",0) >= 0){
+			if(baseball.isTriggered(response)){
 				inLoop = false;
-				print("Do you want to talk about football or baseball");
-				response = getInput();
-				if(findKeyword(response, "baseball", 0) >= 0){
-					baseball.talk();
-				}
-				else{
-					if(findKeyword(response, "football", 0) >= 0){
-						baseball.talk();
-					}
-				}
+				baseball.talk();
 			}
 			else{
 				if(college.isTriggered(response)){
