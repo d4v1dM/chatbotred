@@ -26,7 +26,7 @@ public class David {
 	
 	private static void promptName() {
 		// TODO Auto-generated method stub
-		print("Hello, human! I am a board coverd with semi-conductors and other such electronic components. What is your name?");
+		print("Hello, human! I see you're watching the baseball game, while researching colleges! How should I call you?");
 		user = input.nextLine();
 		print("I will call you " + user  + " until you terminate me.");
 		

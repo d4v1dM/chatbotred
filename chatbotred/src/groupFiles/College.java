@@ -88,9 +88,43 @@ public class College implements Topic {
 		}
 	}
 
+	public void collegeStats(){
+		Scanner userChoice = new Scanner(System.in);
+		ask("Do you want to use SAT scores or ACT scores?" + "\n" + "0: SAT" + "\n" + "1: ACT");
+//		int reply = userChoice.nextInt();
+//		
+//		switch(reply){
+//		case 0:
+//			ask("SAT!");
+//			break;
+//		case 1:
+//			ask("ACT!");
+//			break;
+//		default:
+//			ask("WRONG INPUT!");
+//			break;
+//		}
+		
+		
+		userChoice.close();
+	}
+	
+	public void matchSAT(){
+		setSAT();
+		
+		try {
+			
+			Document site = Jsoup.connect("somehting").get();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ask("Scores are: " + "\n" + SAT[0] + "\n" + SAT[1] + "\n" + SAT[2] + "\n" + SAT[3] + "\n" + SAT[4]);
+	}
+	
 	@Override
 	public boolean isTriggered(String userInput) {
-		if(David.findKeyword(userInput, "college", 0) >= 0){
+		if(David.findKeyword(userInput, "college", 0) >= 0 || David.findKeyword(userInput, "colleges", 0) >= 0){
 			return true;
 		}
 		return false;
