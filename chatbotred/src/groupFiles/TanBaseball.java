@@ -2,6 +2,8 @@
 
 package groupFiles;
 
+import java.io.IOException;
+
 public class TanBaseball implements Topic {
 
 	private boolean inBaseballLoop1;
@@ -10,28 +12,26 @@ public class TanBaseball implements Topic {
 	private int spaces;
 	private static String[] bQuestions = {"Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", 
 										 "Who threw the ball to 3rd base?", "Who just got banned from MLB?", "Who got a home run?", "Who struck out?", 
-							   			 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?"};
+							   			 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?", "Who is the best baseball player ever?"};
+	private static String[] people = {"Murphy", "Cespedes", "Dallas", "Pagan", "Crawford", "Marshall", "Ortiz", "Fernandez", "Posey", "Bradley", "Turner"};
 	private static String[] randomAnswer = {"Correct.", "Wrong.", "Yes.", "No."};
 	
-	public void talk() {
+	public void talk() throws IOException {
 		inBaseballLoop1 = true;
 		while(inBaseballLoop1){
 			printResponse();
 			bResponse = David.getInput();
-			isName(bResponse);
-
 		}
 	}
 
 	private void printResponse() { 
 		int ranIndex = (int) (Math.random() * randomAnswer.length);
 		int responseIndex = (int)(Math.random() * bQuestions.length);
+		int peopleIndex = (int) (Math.random() * people.length);
 		
 		if(nameRight == false){
 			if(spaces > 1){
 				David.print("I do not understand, Please just give me a name.");
-				bResponse = David.getInput();
-				isName(bResponse);
 			}
 		}
 		else{
@@ -39,15 +39,16 @@ public class TanBaseball implements Topic {
 				David.print(randomAnswer[ranIndex] + bResponse + " did");
 			}
 			else{
-				David.print(randomAnswer[ranIndex] + bResponse + " did not.");
+				David.print(randomAnswer[ranIndex] + bResponse + " did not. " + people[peopleIndex] + "did.");
 			}	
 		}
+		
 		David.print(bQuestions[responseIndex]);
 	}
 		
 	
-	public boolean isName(String userInput){
-		
+	public void isName(String userInput){
+		spaces = 0;
 		for(int s = 0; s < userInput.length(); s++){
 			if(userInput.charAt(s) == ' '){
 				spaces++;	
@@ -62,7 +63,6 @@ public class TanBaseball implements Topic {
 			nameRight = true;
 			System.out.println("true");
 		}
-		return nameRight;
 	}
 	
 //	public void isName(String userInput){
