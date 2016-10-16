@@ -146,7 +146,7 @@ public class College implements Topic {
 	
 	@Override
 	public boolean isTriggered(String userInput) {
-		if(David.findKeyword(userInput, "college", 0) >= 0 || David.findKeyword(userInput, "colleges", 0) >= 0){
+		if(David.findKeyword(userInput, "old college", 0) >= 0 || David.findKeyword(userInput, "old colleges", 0) >= 0){
 			return true;
 		}
 		return false;

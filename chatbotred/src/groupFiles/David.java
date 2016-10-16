@@ -13,6 +13,7 @@ public class David {
 
 	static Topic baseball;
 	static Topic college;
+	static Topic newCollege;
 	
 	//declare group's classes
 	//static Topic school;
@@ -80,7 +81,12 @@ public class David {
 				if(college.isTriggered(response)){
 					college.talk();
 				}
-				else print("I'm sorry I dont understand you.");
+				else{
+					if(newCollege.isTriggered(response)){
+						newCollege.talk();
+					}
+					else print("I don't understand your resquest, sorry!");
+				}
 			}
 			
 		}
@@ -168,6 +174,7 @@ public class David {
 		input = new Scanner(System.in);
 		baseball = new TanBaseball();
 		college = new College();
+		newCollege = new NewCollege();
 		
 	}
 
